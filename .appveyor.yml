@@ -15,7 +15,7 @@ cache:
 
 # scripts that run after cloning repository
 install:
-  - npm # команда установки зависимостей
+  - npm init # команда установки зависимостей
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
