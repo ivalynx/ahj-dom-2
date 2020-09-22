@@ -48,28 +48,24 @@ for (let i = 0; i < sortedDataArrays.length; i += 1) {
   tableInnerHTMLs.push(result);
 }
 
-function addContentInTable(i) {
-  let index;
-  if (i === 0 || i === 1) {
-    index = 0;
-  } else if (i === 2 || i === 3) {
-    index = 1;
-  } else if (i === 4 || i === 5) {
-    index = 2;
-  } else if (i === 6 || i === 7) {
-    index = 3;
-  }
-  span.innerHTML = tableInnerHTMLs[i].headContent;
-  tbody.innerHTML = '';
-  theadInner[index].appendChild(span);
-  tbody.innerHTML += tableInnerHTMLs[i].bodyContent;
-}
-let index = 0;
-addContentInTable(index);
+let arrayIndex = 0;
+let headerIndex = 0;
 
+function addContentInTable(index) {
+  span.innerHTML = tableInnerHTMLs[arrayIndex].headContent;
+  tbody.innerHTML = '';
+  theadInner[headerIndex].appendChild(span);
+  tbody.innerHTML += tableInnerHTMLs[index].bodyContent;
+}
+addContentInTable(arrayIndex);
 setInterval(() => {
-  if (index < tableInnerHTMLs.length) {
-    index += 1;
-    addContentInTable(tableInnerHTMLs, index);
+  if (arrayIndex < tableInnerHTMLs.length) {
+    if (arrayIndex > 1) {
+      if (arrayIndex % 2 === 0) {
+        headerIndex += 1;
+      }
+    }
+    addContentInTable(arrayIndex);
+    arrayIndex += 1;
   }
 }, 1000);
