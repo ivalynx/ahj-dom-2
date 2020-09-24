@@ -58,7 +58,8 @@ function addContentInTable(index) {
   tbody.innerHTML += tableInnerHTMLs[index].bodyContent;
 }
 addContentInTable(arrayIndex);
-setInterval(() => {
+
+let timerId = setTimeout(function tick() {
   if (arrayIndex < tableInnerHTMLs.length) {
     if (arrayIndex > 1) {
       if (arrayIndex % 2 === 0) {
@@ -67,5 +68,8 @@ setInterval(() => {
     }
     addContentInTable(arrayIndex);
     arrayIndex += 1;
+  } else {
+    clearTimeout(timerId);
   }
+  timerId = setTimeout(tick, 1000);
 }, 1000);
